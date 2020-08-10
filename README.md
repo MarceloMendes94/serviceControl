@@ -30,3 +30,10 @@ Ter as opções de cadastro caso não exista: Navio[nome, IMO], Porto Embarque[n
 |---|---|
 | RN01  | Utilize algumas das seguintes stacks: Django, Python, PostgreSQL, Html, CSS e JavaScript. |
 | RN02 | Em relação aos dados, estes deverão serem armazenados em banco de dados PostgreSQL. |
+<br><br><br><br>
+
+### Requisitos
+| ID | Descrição  |
+|---|---|
+| RF01 | o sistema deve permitir cadastrar um novo navio com nome e número IMO  |
+|  |  |
