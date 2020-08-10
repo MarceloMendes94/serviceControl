@@ -5,7 +5,7 @@
 3. deploy
 
 ## Documentação
-### minimundo
+### Minimundo
 O planejamento portuário precisa organizar os Serviços na operação e movimentação do navio. Com o grande volume de Serviços, continuar controlando em planilhas é um trabalho mais demorado e você também não consegue ter uma base de dados centralizada alinhadas com outras necessidades do negócio.
 
 Até o momento temos 4 serviços: Cabotagem, Granito, Gusa e Siderúrgico e todo serviço é associado a um navio já contratado. Alinhe o escopo de dados para o cadastro do Serviço.
@@ -19,6 +19,14 @@ O desejo de solução é um tipo de ficha, onde o usuário terá que inserir os 
 | Gusa  |  07 | 2020 | Recife | Vitória  |  0007 | MainSA | Titanic  |  Usina 3 | 24 |
 
 Ter as opções de cadastro caso não exista: Navio[nome, IMO], Porto Embarque[nome, país], Porto Destino[nome, país], Cliente[nome] e Usina[nome].
+<br><br><br><br>
 
-### modelagem
+### Modelagem
+![modelo de entidades](./img/modelagem.jpg)
+<br><br><br><br>
 
+### Regras de negócio
+| ID | Descrição  |
+|---|---|
+| RN01  | Utilize algumas das seguintes stacks: Django, Python, PostgreSQL, Html, CSS e JavaScript. |
+| RN02 | Em relação aos dados, estes deverão serem armazenados em banco de dados PostgreSQL. |
