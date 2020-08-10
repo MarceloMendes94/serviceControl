@@ -35,5 +35,7 @@ Ter as opções de cadastro caso não exista: Navio[nome, IMO], Porto Embarque[n
 ### Requisitos
 | ID | Descrição  |
 |---|---|
-| RF01 | o sistema deve permitir cadastrar um novo navio com nome e número IMO  |
-|  |  |
+| RF01 | O sistema deve permitir cadastrar um novo navio com nome e número IMO  |
+| RF02 | O sistema deve permitir o cadastro de um cliente com apenas o nome |
+| RF03 | O sistema deve permitir o cadastro de um porto com nome e país, seja ele um destino ou um embarque |
+| RF04 | O sistema deve mostrar os dados de todos os serviços para o usuário |
