@@ -19,3 +19,6 @@ O desejo de solução é um tipo de ficha, onde o usuário terá que inserir os 
 | Gusa  |  07 | 2020 | Recife | Vitória  |  0007 | MainSA | Titanic  |  Usina 3 | 24 |
 
 Ter as opções de cadastro caso não exista: Navio[nome, IMO], Porto Embarque[nome, país], Porto Destino[nome, país], Cliente[nome] e Usina[nome].
+
+### modelagem
+
