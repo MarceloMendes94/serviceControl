@@ -1,8 +1,8 @@
 # controle de serviços 
 
 1. Documentação
-2. justificativas
-3. deploy
+2. Justificativas
+3. Build
 
 ## Documentação
 ### Minimundo
@@ -39,3 +39,50 @@ Ter as opções de cadastro caso não exista: Navio[nome, IMO], Porto Embarque[n
 | RF02 | O sistema deve permitir o cadastro de um cliente com apenas o nome |
 | RF03 | O sistema deve permitir o cadastro de um porto com nome e país, seja ele um destino ou um embarque |
 | RF04 | O sistema deve mostrar os dados de todos os serviços para o usuário |
+
+<hr>
+
+## Justificativas
+Eu acredito fortemente que o backend não deve conter muitas operações complexas, por um motivo muito simples, buscar um custo mais baixo. 
+
+Sendo assim processamento e filtragem de dados, são responsabilidade do frontend, mesmo a vaga sendo de backend eu fiz para mostrar como fica interessante desta forma.
+
+Hoje o limitante de performace é o banco de dados gratuito que eu uso, elephantsql uma hospedagem gratuita de banco de dados até 20MB, o delay entre cadastrar e reaparecer na tela é um pouco lento,mas usando um banco melhor isso é resolvido, eu elaborei a minha solução como uma SPA(single page aplication) as operações são muito rapidas sempre, levo todos os dados de uma vez.
+
+Numa visão a longo prazo pode ser um gargalo mas não é um limitante visto que podemos elaborar outras técnicas para reduzir isso com local storage.
+<br> 
+
+O modelo da solução é meio anêmico por esse motivo achei desnecessário colocar colocar coisas pequenas cada [django-app] elaborei um unico app com todas as classes,conforme o crescimento do sistema veremos se é interessante dividir isso, 
+praticamente os unicos arquivos de uso são:view, models, index. 
+
+
+Qualidade de Código e Testes: Infelizmente, essa parte é pouco abordada na faculdade, não realizei testes unitários. 
+
+Adorei o desafio gostaria de tentar embelezar minha solução e num segundo momento,mesmo usando umas técninas bem legais com JS, gostaria de usar como meu portifolio, obrigado pela oportunidade com django.
+
+
+## Build
+O banco é em nuvem então não é necessário nada relacionado a ele.<br>
+Foi utilizado um ambiente virtual, caso não saiba o que é um ambiente virtual, tem esse link aqui.
+[ambientes virtuais no python3](https://pythonacademy.com.br/blog/python-e-virtualenv-como-programar-em-ambientes-virtuais#).
+
+```ambientes windows use o power shell```
+
+Da raiz do projeto 
+```
+> cd source/
+> source bin/activate
+```
+caso tudo ok um ```(source)``` deverá aparacer a esquerda.<br>
+![ok](./img/venv.png)<br>
+vá para pasta projeto.
+```
+cd projeto
+```
+Execute o comando para abrir a aplicação
+```
+python3 manage.py runserver
+```
+caso tenha esse erro em específico faça o comando a baixo e rode novamente o servidor.
+![erro](./img/error.png)
+em caso de dúvidas entre em contato comigo [contato](https://github.com/MarceloMendes94/MarceloMendes94).
