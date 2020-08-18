@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    {% load static %}
+    <link rel="stylesheet" href="{% static './style.css' %}">
+</head>
+<body>
+    <section>
+        <button onclick='mostrarCliente()'> Cadastrar Cliente</button>
+        <button onclick='mostrarNavio()'  > Cadastrar Navio  </button>        
+        <button onclick='mostrarUsina()'  > Cadastrar Usina  </button>        
+        <button onclick='mostrarServico()'> Cadastrar Serviço</button>
+        <button onclick='mostrarPorto()'  > Cadastrar Porto  </button>
+    </section>
+
+    <main>
+        <div id='usinas'>
+            <h1> Usina </h1>
+            <form method="POST" >
+                {% csrf_token %}
+                <input type='text' name="nameFactory" required placeholder="Escreva o nome da usina"/>
+                <button type="submit" >cadastro</button>
+            </form>
+            <h3> usinas cadastradas</h3>             
+            {% for factory in factoryAll %}
+                <div>
+                    usina: {{ factory.name}}
+                </div>
+            {% endfor %}    
+        </div>
+        <div id="cliente">
+             <h2>Clientes</h2>
+            <form method="POST" >
+                {% csrf_token %}
+                <input type='text' name="nameClient" placeholder="Escreva o nome do cliente" required/>            
+                <button type="submit" name='form' >cadastro</button>
+            </form>
+            <h3>Clientes cadastrados</h3>
+            {% for client in clientAll %}
+                <div>
+                    nome: {{ client.name}}
+                </div>
+            {% endfor %}
+        </div>
+        <div id="navio">
+            <h1>Navios</h1>
+            <form method="POST" >
+                {% csrf_token %}
+                <input type='text' name="shipName"  placeholder="Escreva o nome do Navio" required/>
+                <input type='text' name="imoNumber" placeholder="Número IMO do navio" required/>      
+                <button type="submit">cadastro</button>
+            </form>
+            <table>
+                <tr>
+                    <td><h3>Navios cadastrados</h3></td>
+                </tr>
+                {% for ship in shipAll %}
+                <tr>
+                    <td>{{ ship.shipName}}</td>
+                </tr>
+                {% endfor %}                
+            </table>
+        </div>
+        <div id="porto">
+            <h1>Porto</h1>
+            <form method="POST" >
+                {% csrf_token %}
+                <input type='text' name="nameSeaport"  placeholder="Escreva o nome do Porto" required/>
+                <select name='country' id='local'>
+                    <!-- via JS-->               
+                </select>
+                <button type="submit" >cadastro</button>
+            </form>
+            <Table>
+                <tr>
+                    <td><h3>Portos cadastrados</h3></td>
+                </tr>          
+                {% for seaport in seaportAll %}
+                <tr>
+                    <td>{{ seaport.name }} [{{seaport.country}}]</td>
+                </tr>                 
+                {% endfor %}
+             </Table>
+        </div> 
+        <div id="servico">
+            <h1>serviços</h1>
+                <form method="POST"> {% csrf_token %}
+                        <select name="saida">
+                            {% for seaport in seaportAll %}
+                                <option value={{seaport.id}}>
+                                    {{seaport}}
+                                </option>
+                            {% endfor %}
+                        </select>
+
+                        <select name="destino">
+                            {% for seaport in seaportAll %}
+                                <option value={{seaport.id}}>
+                                    {{seaport}}
+                                </option>
+                            {% endfor %}
+                        </select>
+
+                        <select name="navio">
+                            {% for ship in shipAll%}
+                            <option value={{ship.id}}>
+                                {{ship}}
+                            </option>
+                            {% endfor %}
+                        </select>
+
+                        <select name='cliente'>
+                            {% for client in clientAll%}
+                                <option value={{client.id}}>{{client}}</option>
+                            {% endfor%}
+                        </select>
+
+                        <select name="usina">
+                            {% for  factory in factoryAll%}
+                                <option value={{factory.id}}>{{factory}}</option>
+                            {% endfor %}
+                        </select>
+                        <select name="tipoS">                    
+                            <option value='CABOTAGEM'>cabotagem</option>
+                            <option value='GRANITO'>granito</option>
+                            <option value='GUSA'>gusa</option>
+                            <option value='SIDERURGICO'>siderúrgico</option>
+                        </select>
+
+                        <input type="text" name='ordem' placeholder=' n·ordem de venda' required>
+                        <input type="text" name='peso' placeholder='valor orçado'required>
+                        <select name="mes" id="mes">  <!-- via JS-->                    
+                        </select>
+                        <input type="text" name='ano' placeholder='ano'required>
+                        <Button> enviar</Button>
+                </form>
+                <div>
+                    <button onclick="filtro('CABOTAGEM')">Cabotagem</button>
+                    <button onclick="filtro('GUSA')">Gusa</button>
+                    <button onclick="filtro('GRANITO')">Granito</button>
+                    <button onclick="filtro('SIDERURGICO')">Siderurgico</button>
+                </div>
+                <h3>serviços cadastrados</h3>
+                <table id='tableServices'>
+                    <tr>
+                        <td>Cliente</td>
+                        <td>Saída</td>
+                        <td>Destino</td>
+                        <td>Navio</td>
+                        <td>Usina</td>
+                        <td>Serviço</td>
+                        <td>Ordem de venda</td>
+                        <td>Valor orçado</td>
+                        <td>Mes e Ano</td>
+                    </tr>                
+                {% for service in serviceAll %}
+                    <tr>
+                        <td>{{service.client}}</td>
+                        <td>{{ service.packing}}</td>
+                        <td>{{ service.packing}}</td>
+                        <td>{{ service.ship}}</td>
+                        <td>{{service.factory}}</td>
+                        <td>{{ service.serviceType}}</td>
+                        <td>{{service.salesOrder}}</td>
+                        <td>{{service.budgetedAmount  }}</td>
+                        <td>{{ service.month}}/{{ service.year}}</td>
+                    </tr>     
+                        
+                {% endfor %}  
+                </table>
+        </div>     
+    </main>
+
+    <script src="{% static './filtro.js' %}"></script>
+    <script src="{% static './paises.js' %}"></script>
+    <script src="{% static './spa.js' %}"   ></script>
+    <script src="{% static './meses.js' %}" ></script>
+</body>
+</html>
